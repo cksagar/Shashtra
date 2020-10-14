@@ -1,0 +1,31 @@
+<div class='card'>
+    <div class='card-header'>
+        <h4> {{pageTitle}}</h4>
+    </div>
+    <div class='card-body'>
+        <div class="table-responsive">
+            <table class="table" *ngIf='users && users.length'>
+                <thead>
+                    <tr>
+                        <th>Avatar</th>
+                        <th>Name</th>
+                        <th>LastName</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- empty for now -->
+                    <tr *ngFor='let user of users'>
+                        <td><img [src]='user.avatar' [title]='user.name' [style.width.px]='imageWidth'
+                                [style.margin.px]='imageMargin'></td>
+                        <td><a [routerLink]="['/user-list', user.id]">
+                                {{ user.first_name }}
+                            </a></td>
+                        <td>{{user.last_name}}</td>
+                        <td>{{user.email}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

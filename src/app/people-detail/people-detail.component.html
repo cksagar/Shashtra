@@ -1,0 +1,70 @@
+<div class="card">
+    <div class="card-header">
+        {{pageTitle}}
+    </div>
+
+    <div class="card-body" *ngIf="user">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h6>Name:</h6>
+                    </div>
+                    <div class="col-md-6">{{user.data.first_name}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <h6>Lastname:</h6>
+                    </div>
+                    <div class="col-md-6">{{user.data.last_name}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <h6>Email:</h6>
+                    </div>
+                    <div class="col-md-6">{{user.data.email}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <h6>Company Details:</h6>
+                    </div>
+                    <div class="col-md-6">
+
+                        <div class="row">
+                            <div class="col-md-3">Name:</div>
+                            <div class="col-md-9"> <a href="{{user.ad.company}}"></a>{{user.ad.company}}</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3">url:</div>
+                            <div class="col-md-9">{{user.ad.url}}</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3">Text:</div>
+                            <div class="col-md-9">{{user.ad.text}}</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4" *ngIf="user.data.avatar">
+                <img class="center-block img-responsive" [style.height.px]="250" [style.margin.px]="2"
+                    [src]="user.data.avatar" [title]="user.data.first_name">
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <button class="btn btn-outline-secondary mr-3" style="width:80px" [routerLink]="['/user-list']"
+                    queryParamsHandling="preserve">
+                    <i class="fa fa-chevron-left"></i> Back
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}
+</div>
