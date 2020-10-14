@@ -1,3 +1,4 @@
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SettingsComponent } from './settings/settings.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { PeopleDetailComponent } from './people-detail/people-detail.component';
@@ -9,26 +10,25 @@ import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
-    path: 'app-main-nav',
+    path: 'main-nav',
     component: MainNavComponent
   },
   {
-    path: 'login',
-    component: LoginComponent
+    path: 'login', component: LoginComponent
   },
   {
     path: 'settings',
     component: SettingsComponent
   },
   {
+    path: 'people-detail/:id',
+    component: PeopleDetailComponent
+  },
+  {
     path: 'user-list',
     component: UserListComponent
   },
-  {
-    path: 'user-list/:id',
-    component: PeopleDetailComponent
-  },
-  { path: '**', redirectTo: '' }
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

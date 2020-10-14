@@ -1,5 +1,5 @@
-import { UserService } from './../user.service';
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -9,30 +9,18 @@ import { map, shareReplay } from 'rxjs/operators';
   templateUrl: './main-nav.component.html',
   styleUrls: ['./main-nav.component.css']
 })
-export class MainNavComponent implements OnInit, OnChanges {
-
-
-  isLogged: boolean;
+export class MainNavComponent {
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
+    .pipe(map(result => result.matches),
       shareReplay()
     );
 
   constructor(private breakpointObserver: BreakpointObserver,
-    private userService: UserService) { }
+    private router: Router) { }
 
-  ngOnInit() {
-    this.isLogged = this.userService.isLogin;
-  }
-
-  ngOnChanges() {
-    this.isLogged = this.userService.isLogin;
-    console.log("ng onchanges: " + this.isLogged);
+  logout() {
+    this.router.navigate(['/login']);
 
   }
-
-
-
 }

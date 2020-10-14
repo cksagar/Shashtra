@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
     loading = false;
     submitted = false;
     returnUrl: string;
+    isLogged: boolean;
     user: User;
     constructor(
         private formBuilder: FormBuilder,
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        this.isLogged = this.userService.isLogin;
         this.loginForm = this.formBuilder.group({
             email: ['', Validators.required],
             password: ['', Validators.required]
