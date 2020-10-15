@@ -16,6 +16,8 @@ export class PeopleDetailComponent implements OnInit {
     private userService: UserService) { }
 
   ngOnInit() {
+    this.userService.isLogedIn = true;
+
     const param = this.activatedRoute.snapshot.paramMap.get('id');
     if (param) {
       const id = +param;
@@ -26,7 +28,6 @@ export class PeopleDetailComponent implements OnInit {
     this.userService.getSingleUser(id).subscribe({
       next: user => {
         this.user = user
-        console.log("user data in dedtailspage: " + JSON.stringify(user));
       },
       error: err => this.errorMessage = err
     });

@@ -1,11 +1,23 @@
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatButtonModule, MatIconModule, MatListModule, MatToolbarModule } from '@angular/material';
 
 @NgModule({
-  declarations: [ ],
+  declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    MatButtonModule,
+    MatIconModule,
   ],
-  exports: []
+  exports: [CommonModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    MatButtonModule,
+    MatIconModule]
 })
 export class SharedModule { }

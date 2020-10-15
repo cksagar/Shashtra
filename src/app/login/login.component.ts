@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.isLogged = this.userService.isLogin;
         this.loginForm = this.formBuilder.group({
             email: ['', Validators.required],
             password: ['', Validators.required]
@@ -47,7 +46,7 @@ export class LoginComponent implements OnInit {
                     // let dd = JSON.stringify(data);
                     // console.log("login : " + dd);
                     this.router.navigate(['/user-list']);
-                    this.userService.isLogin = true;
+                    this.isLogged = this.userService.isLogedIn
                     this.loading = false;
                 },
                 error => {
@@ -55,10 +54,5 @@ export class LoginComponent implements OnInit {
                     console.log(error.error.message);
                     this.loading = false;
                 });
-    }
-
-    logout() {
-        this.router.navigate(['/login']);
-        this.userService.isLogin = false;
     }
 }

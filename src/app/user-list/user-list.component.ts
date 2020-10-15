@@ -9,6 +9,7 @@ import { User } from '../user.model';
 })
 export class UserListComponent implements OnInit {
   pageTitle = 'People List';
+  userList = false;
   users: User[];
   imageWidth = 100;
   imageMargin = 2;
@@ -17,10 +18,12 @@ export class UserListComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userList =  this.userService.isLogedIn;
+    // this.userList =  this.userService.isLogedIn = true;
+
     this.userService.getAll().subscribe(
       userData => {
         this.users = userData.data;
-        console.log('users data; ' + JSON.stringify(this.users));
       },
       error => {
         this.errorMessage = error.message;

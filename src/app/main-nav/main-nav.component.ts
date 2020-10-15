@@ -1,5 +1,6 @@
+import { UserService } from './../user.service';
 import { Router } from '@angular/router';
-import { Component} from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -9,16 +10,31 @@ import { map, shareReplay } from 'rxjs/operators';
   templateUrl: './main-nav.component.html',
   styleUrls: ['./main-nav.component.css']
 })
-export class MainNavComponent {
+export class MainNavComponent implements OnInit, OnChanges {
+
+  isLogged: boolean;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(map(result => result.matches),
       shareReplay()
     );
 
+
   constructor(private breakpointObserver: BreakpointObserver,
-    private router: Router) { }
+    private router: Router,
+    private userService: UserService) { }
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.isLogged = this.userService.isLogedIn
+
+    if (changes.isLogged) {
+      this.isLogged = this.userService.isLogedIn
+    }
+  }
+
+  ngOnInit() {
+  }
 
   logout() {
-    this.router.navigate(['/login']);
+    this.userService.logOut();
   }
 }

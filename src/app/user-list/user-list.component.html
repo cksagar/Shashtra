@@ -1,4 +1,6 @@
-<div class='card'>
+<div *ngIf="!userList"> Log In First</div>
+
+<div class='card' *ngIf="userList">
     <div class='card-header'>
         <h4> {{pageTitle}}</h4>
     </div>

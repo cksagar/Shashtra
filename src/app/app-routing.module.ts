@@ -1,20 +1,20 @@
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { SettingsComponent } from './settings/settings.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
-import { PeopleDetailComponent } from './people-detail/people-detail.component';
-import { UserListComponent } from './user-list/user-list.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { PeopleDetailComponent } from './people-detail/people-detail.component';
+import { SettingsComponent } from './settings/settings.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 const routes: Routes = [
   {
-    path: 'main-nav',
-    component: MainNavComponent
+    path: 'login', component: LoginComponent
   },
   {
-    path: 'login', component: LoginComponent
+    path: 'main-nav',
+    component: MainNavComponent
   },
   {
     path: 'settings',
