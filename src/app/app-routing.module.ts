@@ -21,12 +21,12 @@ const routes: Routes = [
     component: SettingsComponent
   },
   {
-    path: 'people-detail/:id',
-    component: PeopleDetailComponent
-  },
-  {
     path: 'user-list',
     component: UserListComponent
+  },
+  {
+    path: 'user-list/:id',
+    component: PeopleDetailComponent
   },
   { path: '**', component: PageNotFoundComponent }
 ];
